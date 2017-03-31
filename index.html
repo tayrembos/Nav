@@ -1,0 +1,83 @@
+<div flex layout="row">
+  <!-- Map goes here -->
+  <md-card layout-align="center center" flex>
+    <md-card-header>
+      <md-card-header-text>
+        <span class="md-title">Map</span>
+
+        <!-- MAP TEST -->
+        <head>
+          <style>
+             #map {
+              height: 400px;
+              width: 40%;
+             }
+          </style>
+        </head>
+        <body>
+          <h3>Google Map Test</h3>
+          <div id="map"></div>
+          <script>
+            function initMap() {
+              var uluru = {lat: -25.363, lng: 131.044};
+              var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: uluru
+              });
+              var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+              });
+            }
+          </script>
+          <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3C2hvnThIajR784DaxiRjLaZF2xXBf3M&callback=initMap">
+          </script>
+        </body>
+        <!-- MAP TEST END -->
+
+      </md-card-header-text>
+    </md-card-header>
+  </md-card>
+</div>
+
+<div flex layout="row">
+  <md-card layout-align="start center" flex>
+    <md-card-header>
+      <md-card-header-text>
+        <span class="md-title">Event</span>
+      </md-card-header-text>
+    </md-card-header>
+
+    <form name="eventForm" ng-submit="login.login()" data-ng-controller="LoginCtrl as login" >
+      <md-card-content >
+        <md-input-container>
+          <label>Title</label>
+          <input type="text" ng-model="event.title">
+        </md-input-container>
+        <br>
+        <md-input-container>
+          <label>Description</label>
+          <input type="text" ng-model="event.description">
+        </md-input-container>
+        <br>
+        <md-input-container>
+          <label for="singleSelect"> Type </label>
+          <br><br>
+          <select name="singleSelect" ng-model="event.type">
+            <option value="option-1">Event</option>
+            <option value="option-2">Study Group</option>
+            <option value="option-3">Food</option>
+            <option value="option-4">Danger</option>
+          </select>
+        </md-input-container>
+      </md-card-content>
+
+      <md-card-actions layout="row" layout-align="start center">
+        <md-button type="submit">Submit</md-button>
+      </md-card-actions>
+    </form>
+
+
+  </md-card>
+</div>
