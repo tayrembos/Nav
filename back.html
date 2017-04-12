@@ -1,0 +1,229 @@
+        <!DOCTYPE html>
+        <link rel="stylesheet" type="text/css" href="col.css">
+        <input type="hidden" name="comment_post_ID" value="<?php echo($comment_post_ID); ?>" id="comment_post_ID" />
+
+          <div id="wrap">
+          <div id="header"><h1>Welcome to NavSpot!</h1>
+            <script type="text/javascript" 
+                    src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+            <script type="text/javascript" 
+                    src="http://www.your-domain.com/easy-comment/jquery.easy-comment.min.js"></script>
+
+          </div>
+            <center><img height='200' width='350' class="banner-image" src="https://image.ibb.co/jsFSMQ/NavSpot2.png" align="middle"></center>
+            
+            <div id="nav">
+              <ul>
+                <li><a href="https://www.youtube.com/watch?v=iWSbFoIFazI" style="color:rgb(255,255,255)">NavSpot Promo</a></li>
+                <li><a href="https://www.youtube.com/watch?v=0Ff8OrWc0cY" style="color:rgb(255,255,255)">NavSpot Full Video</a></li>
+              </ul>
+            </div>
+
+          <html>
+            <head>
+              <title>NavSpot Tester</title>
+              <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+              <meta charset="utf-8">
+              <style>
+                /* Always set the map height explicitly to define the size of the div
+                 * element that contains the map. */
+                #map {
+                  height: 50%;
+                  width: 50%;
+                }
+                /* Optional: Makes the sample page fill the window. */
+                html, body {
+                  height: 100%;
+                  margin: 0;
+                  padding: 0;
+                }
+              </style>
+            </head>
+
+
+            <div id="main">
+              <h2>Add A Pin!</h2>
+               <p>Add your event here</p>
+                <body>
+
+                  <script>
+                  function check() {
+                    document.getElementById('f1').innerHTML = document.myform.name.value;
+                    document.getElementById('f2').innerHTML = document.myform.event.value;
+                    document.getElementById('f3').innerHTML = document.myform.location.value;
+                  }
+                  </script>
+
+                  <script type="text/javascript">
+                    function getInfo() {
+                      text = name.value;
+                      text = words.value;
+                      document.getElementById("para").innerHTML += '<p>'+ text
+                      document.getElementById("words").value = "Enter comment"
+                      document.getElementById('name').value = "Enter name"
+                    }
+                  </script>
+
+                  <form method="POST" name='myform'>
+                    <p>Enter your name:
+                      <textarea id='name' rows="1" cols="20">Enter name</textarea>
+          
+                    <p> What type is your event?
+                      <select name='event'>
+                        <option value=Select>--Select Event--</option>
+                        <option value=Food>Food</option>
+                        <option value=Study>Study</option>
+                        <option value=Event>Event</option>
+                        <option value=Danger>Danger</option>
+                      </select>
+                    </p>
+
+                    <p> Where is your event located?
+                      <select id='location'>
+                        <option value=Choose>--Choose Location--</option>
+                        <option value=westMarker>Library West</option>
+                        <option value=marstonMarker>Marston Library</option>
+                        <option value=reitzMarker>Reitz Union</option>
+                        <option value=lawMarker>Law Library</option>
+                        <option value=eastMarker>Library East</option>
+                        <option value=hubMarker>The HUB</option>
+                        <option value=plazaMarker>Plaza of the Americas</option>
+                        <option value=nebMarker>New Engineering Building</option>
+                        <option value=turlingtonMarker>Turlington Plaza</option>
+                        <option value=dungeonMarker>The Dungeon</option>
+                      </select>
+                    </p>
+
+
+                    <textarea id='name' rows="1" cols="20">Enter name</textarea>
+
+                    <textarea id='words' rows="10" cols="20">Enter comment</textarea>
+                    <input type="button" onclick="getInfo()" value="Submit!" /> <br>
+                    <p id="para"></p>
+
+
+                    <!-- not working
+                    <p><input type = 'submit' onclick='check(); return false'></p>
+                    -->
+
+
+                    <!-- return false after function call vital to stop page refresh -->
+                  </p>
+
+                  </form>
+                  
+                  <?php
+                  if(isset($_POST['name']) && !emtpy($_POST['name'])) {
+                    echo "User: " . $_POST['name'] . "has an event" . $_POST['event'] . "at" . $_POST['location' ] . ". Details:" $_POST['words'];
+                  } 
+                  ?>
+
+                  <!--
+                  <p> Submit form:</p>
+                  <p id='f1'></p>
+                  <p id='f2'></p>
+                  <p id='f3'></p> -->
+
+
+
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                  </form> 
+
+                </body>
+                </div>
+
+            <body>
+              <div id="map"></div>
+              <script>
+                var map;
+                function initMap() {
+                  var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 15,
+                    center: {lat: 29.649915, lng: -82.348641},
+                    mapTypeId: 'roadmap'
+                  });
+
+                  var image = 'https://image.ibb.co/kRpLak/98131acc6d38e230b3b02342aef1ef1b.jpg';
+                  var image2 = 'https://image.ibb.co/nmGCo5/Spot3.png';
+                  
+                  var centerMarker = new google.maps.Marker({
+                    position: {lat: 29.649915, lng: -82.348641},
+                    map: map,
+                    icon: image
+                  });
+                  var westMarker = new google.maps.Marker({
+                    position: {lat: 29.651409, lng: -82.342909},
+                    map: map,
+                    icon: image2
+                  });
+                  var eastMarker = new google.maps.Marker({
+                    position: {lat: 29.650871, lng: -82.341713},
+                    map: map,
+                    icon: image2
+                  });
+                  var americasMarker = new google.maps.Marker({
+                    position: {lat: 29.650533, lng: -82.342684},
+                    map: map,
+                    icon: image2
+                  });
+                  var hubMarker = new google.maps.Marker({
+                    position: {lat: 29.648077, lng: -82.345496},
+                    map: map,
+                    icon: image2
+                  });
+                  var turlingtonMarker = new google.maps.Marker({
+                    position: {lat: 29.649085, lng: -82.343699},
+                    map: map,
+                    icon: image2
+                  });
+                  var marstonMarker = new google.maps.Marker({
+                    position: {lat: 29.647965, lng: -82.344005},
+                    map: map,
+                    icon: image2
+                  });
+                  var reitzMarker = new google.maps.Marker({
+                    position: {lat: 29.645793, lng: -82.347717},
+                    map: map,
+                    icon: image2
+                  });
+                  var nebMarker = new google.maps.Marker({
+                    position: {lat: 29.642287, lng: -82.347072},
+                    map: map,
+                    icon: image2
+                  });
+                  var dungeonMarker = new google.maps.Marker({
+                    position: {lat: 29.648323, lng: -82.344293},
+                    map: map,
+                    icon: image2
+                  });
+                  var lawMarker = new google.maps.Marker({
+                    position: {lat: 29.649230, lng: -82.359026},
+                    map: map,
+                    icon: image2
+                  });
+                }
+              </script>
+              <script async defer
+              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeD3jZN_dJj1DfvZFji9FL8bGevJM0qOQ&callback=initMap">
+              </script>
+            </body>
+
+
+            <div id="sidebar">
+              <h2>NavSpot Map</h2>
+              <br><br><br><br><br><br><br><br><br>
+              <p></p>
+              <ul>
+              <!-- <li><a href="#"></a></li>
+              <li><a href="#"></a></li> -->
+              </ul>
+            </div>
+
+
+            <div id="footer">
+              <p>Navigate your campus better with NavSpot!</p>
+          </div>
+        </div>
+        </div>
+      </html>
+      
